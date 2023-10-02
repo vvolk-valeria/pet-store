@@ -1,0 +1,24 @@
+@import '../../../src/variables';
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid $main-color;
+  background: $main-color;
+  box-shadow: 0px 1px 2px 0px rgba(198, 228, 246, 0.05);
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 800;
+  color: $btn-text;
+}
+
+.btn:hover {
+  background-color: $main-color;
+}
+
+.btn:not(:last-of-type) {
+  margin-right: 20px;
+}
