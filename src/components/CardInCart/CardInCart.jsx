@@ -7,7 +7,7 @@ import {
   increaseProductQuantity,
   decreaseProductQuantity,
 } from '../../store/cart/actions' // Імпортуємо функції зменшення та збільшення кількості товару у кошику
-import CheckoutList from '../CheckoutList/CheckoutList.module.scss' // Імпортуємо стилі для списку замовлень
+//import CheckoutList from '../CheckoutList/CheckoutList.module.scss' // Імпортуємо стилі для списку замовлень
 
 const NOIMGSRC = 'img/notfound.png' // Шлях до зображення, яке використовується, якщо imgSrc порожній
 

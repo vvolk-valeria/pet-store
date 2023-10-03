@@ -83,7 +83,7 @@
 //     cards: []
 // }
 
-import React, { useState } from 'react'
+import React from 'react'
 import { Formik, Form, FieldArray } from 'formik'
 import styles from './CartForm.module.scss'
 import btnStyles from '../Button/Button.module.scss'
@@ -93,15 +93,26 @@ import { FormikInputBlock } from './formFields/FormikInputBlock'
 import { NumberFormatInputBlock } from './formFields/NumberFormatInputBlock'
 import { useDispatch } from 'react-redux'
 import { checkoutOrder } from '../../store/cart/actions'
-import PropTypes from 'prop-types'
+import {user} from '../UserAccount/UserAccount'
+//import PropTypes from 'prop-types'
+
+const initialValues = {
+  name: user.name,
+  surname: user.surname,
+  email: user.email,
+  phone: '',
+  address: '',
+  
+};
 
 export const CartForm = () => {
   const dispatch = useDispatch()
-  const [values, setvalues] = useState(null)
+//  const [values, setValues] = useState(null)
 
-  const handleFormSubmit = (values) => {
-    setvalues(values)
+  const handleFormSubmit = (formData) => {
+  //  setValues(values)
     dispatch(checkoutOrder())
+    console.log('formData', formData);
   }
 
   return (
@@ -110,14 +121,7 @@ export const CartForm = () => {
         <h1 className={styles.cartTitle}>2. Shipping info</h1>
 
         <Formik
-          initialValues={{
-            firstName: '',
-            lastName: '',
-            email: '',
-            age: '',
-            phone: '',
-            address: '',
-          }}
+          initialValues={initialValues}
           validationSchema={BasicFormSchema}
           onSubmit={handleFormSubmit}
         >
@@ -167,10 +171,10 @@ export const CartForm = () => {
   )
 }
 
-CartForm.propTypes = {
-  cards: PropTypes.array,
-}
+// CartForm.propTypes = {
+//   cards: PropTypes.array,
+// }
 
-CartForm.defaultProps = {
-  cards: [],
-}
+// CartForm.defaultProps = {
+//   cards: [],
+// }

@@ -23,6 +23,7 @@ export const NumberFormatInputBlock = ({
         format="" // Формат номера телефону
         mask="_" // Дозволяємо пусте форматування та встановлюємо маску "_"
         name={name}
+        id={name} 
         placeholder={placeholder}
         type={type}
       />
@@ -39,8 +40,8 @@ export const NumberFormatInputBlock = ({
 //     label: PropTypes.string.isRequired, // label є обов'язковою строковою властивістю
 // }
 
-NumberFormatInputBlock.defaultProps = {
-  placeholder: '', // За замовчуванням, якщо placeholder не передано, він буде порожнім рядком
-  type: 'text', // За замовчуванням, якщо type не передано, він буде 'text'
-  id: '', // За замовчуванням, якщо id не передано, він буде порожнім рядком
-}
+// NumberFormatInputBlock.defaultProps = {
+//   placeholder: '', // За замовчуванням, якщо placeholder не передано, він буде порожнім рядком
+//   type: 'text', // За замовчуванням, якщо type не передано, він буде 'text'
+//   id: '', // За замовчуванням, якщо id не передано, він буде порожнім рядком
+// }

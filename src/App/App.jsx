@@ -23,7 +23,7 @@ const App = () => {
   // const cards = useSelector((state) => state.cards.cards) // Отримати дані карток товарів з Redux store
 
   return (
-    <Router>
+    <Router basename="pet-store">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />

@@ -7,6 +7,7 @@ export const FormikInputBlock = ({ id, name, placeholder, type, label }) => {
         <label className={styles.orderLabel} htmlFor={name}>{label}</label>
         <Field className={styles.orderInput}
             key={id}
+            id={name}
             name={name}
             placeholder={placeholder}
             type={type} />
@@ -22,8 +23,8 @@ export const FormikInputBlock = ({ id, name, placeholder, type, label }) => {
 //     label: PropTypes.string.isRequired, // label є обов'язковою строковою властивістю
 // };
 
-FormikInputBlock.defaultProps = {
-    placeholder: '', // За замовчуванням, якщо placeholder не передано, він буде порожнім рядком
-    type: 'text', // За замовчуванням, якщо type не передано, він буде 'text'
-    id: '', // За замовчуванням, якщо id не передано, він буде порожнім рядком
-};
+// FormikInputBlock.defaultProps = {
+//     placeholder: '', // За замовчуванням, якщо placeholder не передано, він буде порожнім рядком
+//     type: 'text', // За замовчуванням, якщо type не передано, він буде 'text'
+//     id: '', // За замовчуванням, якщо id не передано, він буде порожнім рядком
+// };
