@@ -36,12 +36,12 @@ padding: 40px 32px;
     font-weight: 600;
     line-height: 1.77;
     outline-color: transparent;
-    
 
-    :global(.active) {
+}
+    
+:global(.active) {
     color: $main-color;
     }
-}
 
 .link_btn {
     border: none;

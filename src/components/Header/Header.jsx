@@ -37,7 +37,7 @@ const Header = () => {
             Catalogue
           </NavLink>
           <div className={styles.search}>
-            <input type="text" placeholder="Search the best in Pawsome " />
+            <input type="text" id="query" placeholder="Search the best in Pawsome " />
           </div>
         </div>
 

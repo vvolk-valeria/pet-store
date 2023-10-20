@@ -41,7 +41,7 @@ const Homepage = () => {
   
 const cardsOnSale = useSelector(selectOnSale);
 
- //console.log('mainCategories', mainCategories);
+// console.log('mainCategories', mainCategories);
 // console.log('cardsOnSale',cardsOnSale);
 
 

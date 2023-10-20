@@ -151,9 +151,10 @@ export const Accordion = ({
                 {content.map((item) => {
                   return (
                     <li key={item.id}>
-                      <label className={css.checkbox_item}>
+                      <label className={css.checkbox_item} htmlFor={`${href}-${item.id}`}>
                         <input
-                          id={item.id}
+                          id={`${href}-${item.id}`}
+                         
                           type="checkbox"
                           className={css.checkbox__field}
                           checked={selected.includes(`${href}-${item.id}`)}

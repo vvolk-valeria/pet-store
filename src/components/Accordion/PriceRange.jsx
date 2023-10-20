@@ -27,6 +27,7 @@ export const PriceRange = () => {
         <ul className={css.slider_input_box}>
           <li className={css.slider_item}>
             <input
+              id="priceMin"
               readOnly
               type="text"
               value={prices[0]}
@@ -36,6 +37,7 @@ export const PriceRange = () => {
 
           <li className={css.slider_item}>
             <input
+              id="priceMax"
               readOnly
               type="text"
               value={prices[1]}
