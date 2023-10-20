@@ -47,3 +47,36 @@ const Modal = ({ title, children, onClose }) => {
 }
 
 export default Modal;
+
+
+export const ModalFilter = ({ children, onClose }) => {
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
+  const handleBackdropClick = event => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    }
+  };
+
+  return createPortal(
+    <div className={css.overlay} onClick={handleBackdropClick}>
+   
+        
+        {children}
+  
+    </div>,
+    modalRoot
+  );
+};

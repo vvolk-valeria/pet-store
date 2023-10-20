@@ -13,8 +13,8 @@
   //   background-color: #ccc; /* Змінено: додано фоновий колір для візуальної перевірки */
   .navbar {
     display: inline-flex;
-    max-width: 1200px;
-    padding: 32px;
+    
+    padding:0 120px;
     align-items: center;
     gap: 59px;
     margin: 0 auto; /* Вирівнюємо по центру відносно батьківського блоку */
@@ -48,19 +48,33 @@
         color: $main-color;
         font-size: 21px;
         font-weight: 600;
-        line-height: 28px; /* 133.333% */
+        line-height: 1.33; /* 133.333% */
+      }
+      .catalogue:hover {
+        color: $hover-color;
+      }
+      .catalogue:focus {
+        color: $focus-color;
       }
     }
 
     .options {
       display: flex;
       align-items: center;
-      width: 144px;
-      height: 32px;
+      // width: 144px;
+      // height: 32px;
       gap: 24px;
+     
 
       .option {
+        color: #494949;
         cursor: pointer;
+      }
+      .option:hover {
+        color: $hover-color;
+      }
+      .option:focus {
+        color: $focus-color;
       }
     }
   }

@@ -1,31 +1,92 @@
-// src/pages/homepage/homepage.component.jsx
+import style from "../../App/App.module.scss";
+import css from "./Homepage.module.scss";
+import { toast } from 'react-toastify';
 import React from 'react'
-// import styles from './homepage.module.scss'
-// import './PromoPage'
-// import PromoPage from './PromoPage'
-// import ProductSlider from './ProductSlider'
-// import TopBrands from './TopBrands'
+import { useState, useEffect } from "react";
+import {fetchMainCategories} from '../../helpers/api';
+import {SliderOfCards} from '../../components/SliderOfCards/SliderOfCards';
+import {SliderOfCategories} from '../../components/SliderOfCategories/SliderOfCategories';
+import {SliderOfBrands} from '../../components/SliderOfBrands/SliderOfBrands';
+import { selectOnSale } from '../../redux/cards/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import {getOnSale} from '../../redux/cards/operations';
+import {fetchIndicators} from '../../helpers/api';
 
-// Умова фільтрації для блоку з вищим рейтингом
-// const highRatingFilter = (item) => item.rating > 4.0
+const Homepage = () => {
+  const [mainCategories, setMainCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
 
-// // Умова фільтрації для блоку з віком "young"
-// const youngAgeFilter = (item) => item.age === 'young'
+  useEffect(() => {
+    fetchMainCategories()
+    .then(setMainCategories)
+    .catch(error => {
+      toast.error(
+        `Oops, something went wrong! Reload the page or try again later!`
+      );
+      console.log('Error', error);
+    })
+    fetchIndicators('brands')
+    .then(setBrands)
+      .catch(error => {
+        console.log('Error', error);
+      })
+  }, [])
 
-const Homepage = () => (
-  <div>Hello World</div>
-  //   <div className={styles['homepage']}>
-  //     <PromoPage />
-  //     <ProductSlider
-  //       filterCondition={highRatingFilter}
-  //       blockTitle="Your Pet will love these"
-  //     />
-  //     <ProductSlider
-  //       filterCondition={youngAgeFilter}
-  //       blockTitle="For Your Young Pets"
-  //     />
-  //     <TopBrands />
-  //   </div>
-)
+  const dispatch = useDispatch();
+    useEffect(() => {
+    
+      dispatch(getOnSale());
+      return;
+    },[dispatch])
+  
+const cardsOnSale = useSelector(selectOnSale);
 
-export default Homepage
+ //console.log('mainCategories', mainCategories);
+// console.log('cardsOnSale',cardsOnSale);
+
+
+
+if (cardsOnSale.length === 0 || mainCategories.length === 0){
+  return;
+}
+
+const {content} = cardsOnSale;
+
+  return (
+    <section className={css.section}>
+<div  className={style.container}>
+
+
+<div className={css.hero}>
+<div className={css.title_box}>
+  <p className={css.title_notice}>HIGH QUALITY</p>
+<h1 className={css.title}>FOR PET</h1>
+<p className={css.title_signature}>We have everything your pets could dream of</p>
+</div>
+ <SliderOfCategories items={mainCategories}/> 
+</div>
+
+ 
+{/* //=== розкоментувати коли буде ендпоінт 
+<h2 className={css.subtitle}>Your Pet will love these</h2>
+
+    <SliderOfCards items={content} /> */} 
+
+
+    <h2 className={css.subtitle}>On Sale</h2>
+
+
+    <SliderOfCards items={content} />
+
+
+    <h2 className={css.subtitle}>brands</h2>
+
+    <SliderOfBrands items={brands} />
+    
+  </div>
+  </section>
+  )
+  
+  }
+
+export default Homepage;

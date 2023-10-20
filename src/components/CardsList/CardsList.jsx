@@ -2,46 +2,81 @@ import React from 'react' // Імпортуємо бібліотеку React
 import Card from '../Card/Card' // Імпортуємо компонент Card
 // import PropTypes from 'prop-types'; // Імпортуємо PropTypes для валідації властивостей компонента
 import styles from './CardsList.module.scss' // Імпортуємо стилі для компонента
+import { selectCards } from '../../redux/cards/selectors';
+//import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Loader from '../Loader/Loader';
+//import {cardList} from '../../files/cardList'
+//import { useEffect } from 'react';
 
-const CardsList = ({
-  cards,
-  onClickHandler,
-  changeFavouriteHandler,
-  favouritesCardsArr,
-}) => {
-  // Створюємо компоненти Card для кожного об'єкта в масиві cards
-  const cardsComponents = cards.map(({ title, price, id, color, imgSrc }) => {
+  // const cards = cardList;
+ 
+
+//  export const handleSort = event => {
+//    // console.log('event', event);
+
+//     switch (event) {
+//       case 'price_desc':
+//          sortItems = [...cards].sort((a, b) => b.price - a.price);
+
+//         return sortItems;
+//       case 'price_asc':
+//          sortItems = [...cards].sort((a, b) => a.price - b.price);
+     
+//         return sortItems;
+//       case 'rating_desc':
+//          sortItems = [...cards].sort((a, b) => b.rating - a.rating);
+
+//         return sortItems;
+//       case 'rating_asc':
+//          sortItems = [...cards].sort((a, b) => a.rating - b.rating);
+
+//         return sortItems;
+//       default:
+//         console.log('Invalid type');
+//         sortItems = cards;
+//         return sortItems;
+//     }
+//   };
+
+ 
+ 
+
+const CardsList = () => {
+ 
+ const cards = useSelector(selectCards);
+
+ //console.log('cards:', cards);
+
+
+//  useEffect(() => {
+//   let sortItems;
+//   console.log('sortItems', sortItems);
+//  },[]);
+
+const {content} = cards;
+//console.log('content:', content);
+
     return (
-      <Card
-        key={id}
-        title={title}
-        price={price}
-        id={id}
-        color={color}
-        imgSrc={imgSrc}
-        isFavourite={favouritesCardsArr.includes(id)}
-        onClickHandler={onClickHandler}
-        changeFavouriteHandler={changeFavouriteHandler}
-      />
+<>
+{/* {console.log('content:l', content.length === 0)} */}
+{content ? (
+  <ul 
+  className={styles.list}
+  >
+  {content.map(item => {
+    return <Card key={item.id} item={item} />;
+  })}
+</ul>
+):(
+  <Loader/>
+)}
+</>
+   
     )
-  })
 
-  return (
-    // Відображаємо список компонентів Card у вигляді нумерованого списку
-    <ul className={styles.list}>{cardsComponents}</ul>
-  )
 }
 
-// CardsList.propTypes = {
-//     cards: PropTypes.array.isRequired, // Властивість "cards" повинна бути масивом і обов'язковою
-//     onClickHandler: PropTypes.func.isRequired, // Властивість "onClickHandler" повинна бути функцією і обов'язковою
-//     changeFavouriteHandler: PropTypes.func.isRequired, // Властивість "changeFavouriteHandler" повинна бути функцією і обов'язковою
-//     favouritesCardsArr: PropTypes.array // Властивість "favouritesCardsArr" є необов'язковою і також повинна бути масивом
-// };
 
-CardsList.defaultProps = {
-  cards: [], // За замовчуванням, якщо властивість "cards" не передана, вона буде пустим масивом
-  favouritesCardsArr: [], // За замовчуванням, якщо властивість "favouritesCardsArr" не передана, вона також буде пустим масивом
-}
 
-export default CardsList // Експортуємо компонент CardsList
+export default CardsList;

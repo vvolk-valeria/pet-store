@@ -37,6 +37,10 @@ padding: 40px 32px;
     line-height: 1.77;
     outline-color: transparent;
     
+
+    :global(.active) {
+    color: $main-color;
+    }
 }
 
 .link_btn {
@@ -57,7 +61,4 @@ padding: 40px 32px;
  }
 
 
-// li > a.active{
-//     color: red;
-//     // color: $main-color;
-// }
+ 

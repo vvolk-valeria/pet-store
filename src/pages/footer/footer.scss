@@ -1,9 +1,12 @@
+@import "..//../variables.scss";
+
 .footer {
-  height: 432px;
-  margin-top: 100px;
+ padding: 56px 0;
   .footer-all {
-    padding: 136px 120px 56px 120px;
-    height: 248px;
+    width: 1440px;
+    margin: 0 auto;
+    padding: 0 120px;
+    // height: 248px;
 
     .footer-info {
       display: flex;
@@ -15,47 +18,54 @@
         text-align: center;
       }
     }
-    .logo-column {
-      width: 273px;
+    .logo-container {
+      display: block;
+      margin-bottom: 24px;
     }
 
     .footer-column {
-      width: 173px;
-      height: 248px;
+
       h4 {
-        //styleName: Caption default;
-        font-family: Lato;
+   
         font-size: 16px;
-        line-height: 24px;
+        line-height: 1.5;
         font-weight: 700;
-        letter-spacing: 0em;
         text-align: center;
-        margin-bottom: 50px;
-        margin-top: 0px;
+        margin-bottom: 40px;
       }
     }
 
     /* Застосовуємо стилі для контенту в межах кожної колонки */
-    .logo-column p {
-      margin-top: 24px;
-      //styleName: Body default;
-      font-family: Lato;
+    .logo-column li {
+ 
       font-size: 16px;
       font-weight: 400;
-      line-height: 24px;
-      letter-spacing: 0em;
-      text-align: left;
+      line-height: 1.5;
+    }
+    .logo-column li:not(:last-child) {
+      margin-bottom: 16px;
+    
     }
 
-    .footer-navigation {
-      //styleName: Body default;
-      font-family: Lato;
+    .footer-navigation li{
       font-size: 16px;
       font-weight: 400;
-      line-height: 24px;
-      letter-spacing: 0em;
+      line-height: 1.5;
       text-align: center;
       text-decoration: none;
+cursor: pointer;
+      color: #1B1B1B;
+    }
+
+    .footer-navigation li a:hover{
+      color: $hover-color;
+    }
+    .footer-navigation li a:focus{
+      color: $focus-color;
+    }
+
+    .footer-navigation li:not(:last-child){
+      margin-bottom: 16px;
     }
 
     .footer-social {
@@ -64,22 +74,34 @@
       margin: 0;
     }
 
-    .footer-social a {
-      margin-left: 16px; /* Додати відступ між іконками */
+    .footer-social-item:not(:last-child) {
+      margin-right: 16px; 
+      border: none;
+    }
+
+    .footer-social-link {
+      display: block;
+      width: 100%;
       color: #333;
       text-decoration: none;
+      cursor: pointer;
+    }
+
+    .footer-social-link:hover {
+      color: $hover-color;
+    }
+
+    .footer-social-link:focus {
+      color: $focus-color;
     }
 
     .reserved {
-      // margin-top: 136px;
-      margin: 56px, 120px;
-      // padding: 56px, 120px, 56px, 120px;
-      font-family: Lato;
+      margin-top: 56px;
       font-size: 12px;
       font-weight: 500;
-      line-height: 16px;
-      letter-spacing: 0em;
+      line-height: 1.33;
       text-align: left;
+      text-transform: uppercase;
     }
   }
 }

@@ -2,11 +2,12 @@ import React from 'react'
 // import PropTypes from 'prop-types'; // Імпортуємо модуль PropTypes для визначення типів властивостей
 import styles from './CardInCart.module.scss' // Імпортуємо стилі для компонента
 import TrashIcon from './TrashIcon' // Імпортуємо компонент іконки смітника
-import { useDispatch, useSelector } from 'react-redux' // Імпортуємо функції useDispatch та useSelector з Redux
-import {
-  increaseProductQuantity,
-  decreaseProductQuantity,
-} from '../../store/cart/actions' // Імпортуємо функції зменшення та збільшення кількості товару у кошику
+//import { useDispatch, useSelector } from 'react-redux' // Імпортуємо функції useDispatch та useSelector з Redux
+//import { useSelector } from 'react-redux' 
+// import {
+//   increaseProductQuantity,
+//   decreaseProductQuantity,
+// } from '../../store/cart/actions' // Імпортуємо функції зменшення та збільшення кількості товару у кошику
 //import CheckoutList from '../CheckoutList/CheckoutList.module.scss' // Імпортуємо стилі для списку замовлень
 
 const NOIMGSRC = 'img/notfound.png' // Шлях до зображення, яке використовується, якщо imgSrc порожній
@@ -22,16 +23,18 @@ const CardInCart = ({
   hasQuantityBtns, // Показувати кнопки для зміни кількості товару (булеве значення)
   hasTrashIcon, // Показувати іконку смітника (булеве значення)
 }) => {
-  const cardsInCart = useSelector(({ cardsInCart }) => cardsInCart) // Отримуємо дані з Redux за допомогою useSelector
-  const currentCard = cardsInCart.find(({ id }) => id === id) // Знаходимо поточну картку товару у кошику за артикулом
-  const dispatch = useDispatch() // Отримуємо функцію dispatch з Redux для відправлення дій
+ // const cardsInCart = useSelector(({ cardsInCart }) => cardsInCart) // Отримуємо дані з Redux за допомогою useSelector
+ // const currentCard = cardsInCart.find(({ id }) => id === id) // Знаходимо поточну картку товару у кошику за артикулом
+ // const dispatch = useDispatch() // Отримуємо функцію dispatch з Redux для відправлення дій
 
   const decrementHandler = () => {
-    dispatch(decreaseProductQuantity(id)) // Відправляємо дію на зменшення кількості товару у кошику
+    console.log('decrementHandler');
+   // dispatch(decreaseProductQuantity(id)) // Відправляємо дію на зменшення кількості товару у кошику
   }
 
   const incrementHandler = () => {
-    dispatch(increaseProductQuantity(id)) // Відправляємо дію на збільшення кількості товару у кошику
+    console.log('incrementHandler');
+    //dispatch(increaseProductQuantity(id)) // Відправляємо дію на збільшення кількості товару у кошику
   }
 
   return (
@@ -58,7 +61,8 @@ const CardInCart = ({
         ) : (
           ''
         )}
-        <span>{currentCard.count}</span>
+        <span>currentCard</span>
+        {/* <span>{currentCard.count}</span> */}
         {hasQuantityBtns ? (
           <button
             className={`${styles.quantityBtn} ${styles.increment}`}
@@ -70,7 +74,8 @@ const CardInCart = ({
           ''
         )}
       </p>
-      <p className={styles.total}>{currentCard.count * price} UAH</p>
+      {/* <p className={styles.total}>{currentCard.count * price} UAH</p> */}
+      <p className={styles.total}>currentCard UAH</p>
       {hasTrashIcon ? (
         <button
           className={styles.deleteItemBtn}

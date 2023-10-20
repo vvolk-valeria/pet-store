@@ -176,7 +176,7 @@ export const UserPersonalInfo = () => {
                 required
               />
               <button type="button"
-                // id="visibilityBtn"
+            
                 className={css.iconPassword}
                 onClick={toggleConfirmPassword}
                 disabled={disabled}

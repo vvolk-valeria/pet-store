@@ -1,12 +1,14 @@
-// src/App.js
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import React from 'react'
 import {lazy} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Cart from '../pages/Cart/Cart'
-import Catalog from '../pages/Catalog'
+import Catalog from '../pages/Catalog/Catalog'
 import Favourites from '../pages/Favourites/Favourites'
 import Error from '../components/Error/Error'
-import Homepage from '../pages/homepage/Homepage'
+import Homepage from '../pages/Homepage/Homepage'
+import ProductPage from '../pages/ProductPage/ProductPage'
 import { Layout } from '../components/Layout/Layout'
 import './App.module.scss'
 import {PrivateRoute} from '../helpers/routs/PrivateRoute'
@@ -17,17 +19,27 @@ const UserInfo = lazy(() => import('../components/UserInfo/UserInfo'));
 const UserOrdersAll = lazy(() => import('../components/UserOrdersAll/UserOrdersAll'));
 const UserOrderItem = lazy(() => import('../components/UserOrderItem/UserOrderItem'));
 const UserReviews = lazy(() => import('../components/UserReviews/UserReviews'));
+const ProductAbout = lazy(() => import('../components/ProductAbout/ProductAbout'));
+const ProductInstructions = lazy(() => import('../components/ProductInstructions/ProductInstructions'));
+const ProductReviews = lazy(() => import('../components/ProductReviews/ProductReviews'));
 
 
 const App = () => {
-  // const cards = useSelector((state) => state.cards.cards) // Отримати дані карток товарів з Redux store
 
   return (
+    <>
     <Router basename="pet-store">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
-          <Route path="/catalogue" element={<Catalog />} />
+          <Route path="/catalogue/:category" element={<Catalog />}>
+          <Route path=":itemName"  element={<Catalog />}/>
+          </Route>
+          <Route path="/catalogue/products/:productId" element={<ProductPage />}>
+            <Route path="about" element={<ProductAbout />}></Route>
+            <Route path="instructions" element={<ProductInstructions />}></Route>
+            <Route path="reviews" element={<ProductReviews />}></Route>
+          </Route>
           <Route path="/cart" element={<Cart />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/user" element={<PrivateRoute
@@ -44,6 +56,8 @@ const App = () => {
         </Route>
       </Routes>
     </Router>
+    <ToastContainer />
+    </>
   )
 }
 

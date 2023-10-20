@@ -1,55 +1,58 @@
 import React, { useEffect } from 'react'
-import { fetchCardsList } from '../../store/cards/actions' // Імпортуємо функцію для отримання списку карток товарів зі складу.
+// import { fetchCardsList } from '../../store/cards/actions' // Імпортуємо функцію для отримання списку карток товарів зі складу.
 import styles from './Cart.module.scss'
-import CartList from '../../components/CartList/CartList' // Імпортуємо компонент для відображення списку товарів у кошику.
-import { useDispatch, useSelector } from 'react-redux' // Імпортуємо функції для взаємодії зі стором Redux.
-import { removeFromCart } from '../../store/cart/actions' // Імпортуємо функцію для видалення товару з кошика.
+//import CartList from '../../components/CartList/CartList' // Імпортуємо компонент для відображення списку товарів у кошику.
+import {useSelector } from 'react-redux' // Імпортуємо функції для взаємодії зі стором Redux.
+// import { removeFromCart } from '../../store/cart/actions' // Імпортуємо функцію для видалення товару з кошика.
 import Loader from '../../components/Loader/Loader' // Імпортуємо компонент завантаження.
-import { CartForm } from '../../components/CartForm/CartForm' // Імпортуємо компонент для відображення форми замовлення.
-import OrderTotals from '../../components/OrderTotals/OrderTotals' // Імпортуємо компонент для підсумкової інформації про замовлення.
+//import { CartForm } from '../../components/CartForm/CartForm' // Імпортуємо компонент для відображення форми замовлення.
+//import OrderTotals from '../../components/OrderTotals/OrderTotals' // Імпортуємо компонент для підсумкової інформації про замовлення.
 
 const Cart = () => {
   const isLoading = useSelector(({ cards }) => cards.isLoading) // Витягуємо статус завантаження списку карток товарів зі стору Redux.
-  const cardsList = useSelector(({ cards }) => cards.cards) // Витягуємо список карток товарів зі стору Redux.
+  //const cardsList = useSelector(({ cards }) => cards.cards) // Витягуємо список карток товарів зі стору Redux.
   const cardsInCart = useSelector(({ cardsInCart }) => cardsInCart) // Витягуємо список товарів у кошику зі стору Redux.
   const hasError = useSelector(({ hasError }) => hasError) // Витягуємо статус помилки зі стору Redux.
-  const dispatch = useDispatch() // Ініціалізуємо функцію dispatch для відправки дій до стору Redux.
+ // const dispatch = useDispatch() // Ініціалізуємо функцію dispatch для відправки дій до стору Redux.
 
   useEffect(() => {
-    dispatch(fetchCardsList()) // Викликаємо функцію для отримання списку карток товарів при завантаженні компонента.
+    console.log('fetchCardsList');
+   // dispatch(fetchCardsList()) // Викликаємо функцію для отримання списку карток товарів при завантаженні компонента.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const deleteFromCartHandler = (id) => {
-    dispatch(removeFromCart(id)) // Функція для видалення товару з кошика із використанням Redux.
-  }
+  // const deleteFromCartHandler = (id) => {
+  //   console.log("removeFromCart, id", id);
+  //  // dispatch(removeFromCart(id)) // Функція для видалення товару з кошика із використанням Redux.
+  // }
 
   let content
 
   if (hasError) {
     content = <div>Sorry, error</div> // Відображення повідомлення про помилку, якщо така виникла.
-  } else {
-    const filteredCards = cardsList.filter(({ id }) => {
-      return cardsInCart.find(({ id }) => {
-        return id
-      })
-    })
-    content = (
-      <>
-        <CartList
-          cards={filteredCards}
-          onClickHandler={deleteFromCartHandler}
-        />
-        {/* Відображення списку товарів у кошику. */}
-        <div className={styles.totalBlock}>
-          <OrderTotals />
-          {/* // Відображення підсумкової інформації про замовлення. */}
-        </div>
-        <CartForm />
-        {/* // Відображення форми замовлення. */}
-      </>
-    )
-  }
+  } 
+  // else {
+  //   const filteredCards = cardsList.filter(({ id }) => {
+  //     return cardsInCart.find(({ id }) => {
+  //       return id
+  //     })
+  //   })
+  //   content = (
+  //     <>
+  //       <CartList
+  //         cards={filteredCards}
+  //         onClickHandler={deleteFromCartHandler}
+  //       />
+  //       {/* Відображення списку товарів у кошику. */}
+  //       <div className={styles.totalBlock}>
+  //         <OrderTotals />
+  //         {/* // Відображення підсумкової інформації про замовлення. */}
+  //       </div>
+  //       <CartForm />
+  //       {/* // Відображення форми замовлення. */}
+  //     </>
+  //   )
+  // }
 
   return (
     <div className={styles.cartSection}>
