@@ -2,7 +2,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React from 'react'
 import {lazy} from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import {Routes, Route } from 'react-router-dom'
 import Cart from '../pages/Cart/Cart'
 import Catalog from '../pages/Catalog/Catalog'
 import Favourites from '../pages/Favourites/Favourites'
@@ -28,7 +28,6 @@ const App = () => {
 
   return (
     <>
-    <Router basename="pet-store">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
@@ -55,7 +54,6 @@ const App = () => {
           <Route path="/*" element={<Error />} />
         </Route>
       </Routes>
-    </Router>
     <ToastContainer />
     </>
   )
