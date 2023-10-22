@@ -16,15 +16,15 @@
   font-weight: 400;
   line-height: 1.77;
   cursor: pointer;
+}
 
-  :global(.active) {
+.link_item_title:global(.active) {
     color: $text-color;
 
     font-size: 18px;
     font-weight: 600;
     line-height: 1.77;
   }
-}
 
 .filters_title {
   color: #000;

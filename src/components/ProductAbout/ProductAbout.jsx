@@ -1,62 +1,117 @@
-
-import css from './ProductAbout.module.scss'
-import {  useParams } from 'react-router-dom';
+import css from "./ProductAbout.module.scss";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {fetchProductById} from '../../helpers/api';
+import { fetchProductById } from "../../helpers/api";
 
 const ProductAbout = () => {
-  const {productId} = useParams();
+  const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  
 
   useEffect(() => {
-       
-    fetchProductById(productId).then(setProduct).catch(error => {
-    console.log('Error',error);
-    });
-    
-}, [productId]);
+    fetchProductById(productId)
+      .then(setProduct)
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  }, [productId]);
 
-if (!product) {
+  if (!product) {
     return;
-}
-
-const {description, age, productSize, weight, brand, prescription, contraindications} = product;
-    return (
-  <>
-  <div className={css.box}>
-
-<div className={css.box_item_description}>
-
-<h3 className={css.title}>Description</h3>
-
-{ description ? (<p className={css.text}>{description}</p>) :
-(<p className={css.text}>No information</p>)}
-
-
-  </div>
-
-  <div  className={css.box_item_characteristics}>
-  <h3 className={css.title}>Characteristics</h3>
-
-<ul className={css.list}>
-  <li className={css.list_item}><p className={css.list_item_title}>Age</p><span className={css.line}></span><p className={css.list_item_text}>{age.name}</p></li>
-  <li className={css.list_item}><p className={css.list_item_title}>Breed size</p><span className={css.line}></span>{productSize ? (<p className={css.list_item_text}>{productSize}</p>):(<p className={css.list_item_text}>No info</p>)}</li>
-  <li className={css.list_item}><p className={css.list_item_title}>Package weight</p><span className={css.line}></span><p className={css.list_item_text}>{weight.name}</p></li>
-  <li className={css.list_item}><p className={css.list_item_title}>Brand</p><span className={css.line}></span><p className={css.list_item_text}>{brand}</p></li>
-  <li className={css.list_item}><p className={css.list_item_title}>Prescription</p><span className={css.line}></span><p className={css.list_item_text}>{prescription.name}</p></li>
-  <li className={css.list_item}><p className={css.list_item_title}>Contraindications</p><span className={css.line}></span><p className={css.list_item_text}>{contraindications}</p></li>
-</ul>
-
-  </div>
-
-
-  </div>
-  
-  </>
-  
-    )
   }
-  
-  
-  export default ProductAbout;
+
+  const {
+    description,
+    age,
+    productSize,
+    weight,
+    brand,
+    prescription,
+    contraindications,
+  } = product;
+  return (
+    <>
+      <div className={css.box}>
+        <div className={css.box_item_description}>
+          <h3 className={css.title}>Description</h3>
+
+          {description ? (
+            <p className={css.text}>{description}</p>
+          ) : (
+            <p className={css.text}>No information</p>
+          )}
+        </div>
+
+        <div className={css.box_item_characteristics}>
+          <h3 className={css.title}>Characteristics</h3>
+
+          <table className={css.table}>
+            <tbody className={css.list}>
+              <tr className={css.table_row}>
+                <td className={css.table_title}>
+                  <p className={css.table_title_box}>Age</p>
+                  <span className={css.line}></span>
+                </td>
+                <td className={css.table_data}>
+                  {" "}
+                  {age ? age.name : "No info"}{" "}
+                </td>
+              </tr>
+              <tr className={css.table_row}>
+                <td className={css.table_title}>
+                  {" "}
+                  <p className={css.table_title_box}>Breed size</p>
+                  <span className={css.line}></span>
+                </td>
+                <td className={css.table_data}>
+                  {productSize ? productSize : "No info"}{" "}
+                </td>
+              </tr>
+              <tr className={css.table_row}>
+                <td className={css.table_title}>
+                  <p className={css.table_title_box}>Package weight</p>
+                  <span className={css.line}></span>
+                </td>
+                <td className={css.table_data}>
+                  {" "}
+                  {weight ? weight.name : "No info"}{" "}
+                </td>
+              </tr>
+              <tr className={css.table_row}>
+                <td className={css.table_title}>
+                  <p className={css.table_title_box}>Brand</p>
+                  <span className={css.line}></span>
+                </td>
+                <td className={css.table_data}>
+                  {" "}
+                  {brand ? { brand } : "No info"}{" "}
+                </td>
+              </tr>
+              <tr className={css.table_row}>
+                <td className={css.table_title}>
+                  <p className={css.table_title_box}>Prescription</p>
+                  <span className={css.line}></span>
+                </td>
+                <td className={css.table_data}>
+                  {" "}
+                  {prescription ? prescription.name : "No info"}{" "}
+                </td>
+              </tr>
+              <tr className={css.table_row}>
+                <td className={css.table_title}>
+                  <p className={css.table_title_box}>Contraindications</p>
+                  <span className={css.line}></span>
+                </td>
+                <td className={css.table_data}>
+                  {" "}
+                  {contraindications ? contraindications : "No info"}{" "}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default ProductAbout;
