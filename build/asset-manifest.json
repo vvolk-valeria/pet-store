@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/pet-store/static/css/main.6626c684.css",
-    "main.js": "/pet-store/static/js/main.d521ec38.js",
+    "main.css": "/pet-store/static/css/main.d47839c8.css",
+    "main.js": "/pet-store/static/js/main.21ce3425.js",
     "static/css/2.14881123.chunk.css": "/pet-store/static/css/2.14881123.chunk.css",
     "static/js/2.001633fe.chunk.js": "/pet-store/static/js/2.001633fe.chunk.js",
     "static/css/736.b8c2700b.chunk.css": "/pet-store/static/css/736.b8c2700b.chunk.css",
@@ -14,10 +14,12 @@
     "static/js/43.cb9ac144.chunk.js": "/pet-store/static/js/43.cb9ac144.chunk.js",
     "static/css/120.398cbdc5.chunk.css": "/pet-store/static/css/120.398cbdc5.chunk.css",
     "static/js/120.a1c7867d.chunk.js": "/pet-store/static/js/120.a1c7867d.chunk.js",
-    "static/css/222.76abcf6e.chunk.css": "/pet-store/static/css/222.76abcf6e.chunk.css",
-    "static/js/222.7d77c00a.chunk.js": "/pet-store/static/js/222.7d77c00a.chunk.js",
-    "static/js/137.47eee088.chunk.js": "/pet-store/static/js/137.47eee088.chunk.js",
-    "static/js/391.8bbde02c.chunk.js": "/pet-store/static/js/391.8bbde02c.chunk.js",
+    "static/css/222.b448b478.chunk.css": "/pet-store/static/css/222.b448b478.chunk.css",
+    "static/js/222.1347e58f.chunk.js": "/pet-store/static/js/222.1347e58f.chunk.js",
+    "static/css/924.fae6d1ee.chunk.css": "/pet-store/static/css/924.fae6d1ee.chunk.css",
+    "static/js/924.39868f67.chunk.js": "/pet-store/static/js/924.39868f67.chunk.js",
+    "static/css/888.8a7d8016.chunk.css": "/pet-store/static/css/888.8a7d8016.chunk.css",
+    "static/js/888.f60afa12.chunk.js": "/pet-store/static/js/888.f60afa12.chunk.js",
     "static/js/763.36cd7b39.chunk.js": "/pet-store/static/js/763.36cd7b39.chunk.js",
     "static/js/692.b5101568.chunk.js": "/pet-store/static/js/692.b5101568.chunk.js",
     "static/media/lato-regular.woff2": "/pet-store/static/media/lato-regular.5b3bd11e09b4b23e1f88.woff2",
@@ -26,8 +28,8 @@
     "static/media/slick.ttf": "/pet-store/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/pet-store/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/pet-store/index.html",
-    "main.6626c684.css.map": "/pet-store/static/css/main.6626c684.css.map",
-    "main.d521ec38.js.map": "/pet-store/static/js/main.d521ec38.js.map",
+    "main.d47839c8.css.map": "/pet-store/static/css/main.d47839c8.css.map",
+    "main.21ce3425.js.map": "/pet-store/static/js/main.21ce3425.js.map",
     "2.14881123.chunk.css.map": "/pet-store/static/css/2.14881123.chunk.css.map",
     "2.001633fe.chunk.js.map": "/pet-store/static/js/2.001633fe.chunk.js.map",
     "736.b8c2700b.chunk.css.map": "/pet-store/static/css/736.b8c2700b.chunk.css.map",
@@ -40,15 +42,17 @@
     "43.cb9ac144.chunk.js.map": "/pet-store/static/js/43.cb9ac144.chunk.js.map",
     "120.398cbdc5.chunk.css.map": "/pet-store/static/css/120.398cbdc5.chunk.css.map",
     "120.a1c7867d.chunk.js.map": "/pet-store/static/js/120.a1c7867d.chunk.js.map",
-    "222.76abcf6e.chunk.css.map": "/pet-store/static/css/222.76abcf6e.chunk.css.map",
-    "222.7d77c00a.chunk.js.map": "/pet-store/static/js/222.7d77c00a.chunk.js.map",
-    "137.47eee088.chunk.js.map": "/pet-store/static/js/137.47eee088.chunk.js.map",
-    "391.8bbde02c.chunk.js.map": "/pet-store/static/js/391.8bbde02c.chunk.js.map",
+    "222.b448b478.chunk.css.map": "/pet-store/static/css/222.b448b478.chunk.css.map",
+    "222.1347e58f.chunk.js.map": "/pet-store/static/js/222.1347e58f.chunk.js.map",
+    "924.fae6d1ee.chunk.css.map": "/pet-store/static/css/924.fae6d1ee.chunk.css.map",
+    "924.39868f67.chunk.js.map": "/pet-store/static/js/924.39868f67.chunk.js.map",
+    "888.8a7d8016.chunk.css.map": "/pet-store/static/css/888.8a7d8016.chunk.css.map",
+    "888.f60afa12.chunk.js.map": "/pet-store/static/js/888.f60afa12.chunk.js.map",
     "763.36cd7b39.chunk.js.map": "/pet-store/static/js/763.36cd7b39.chunk.js.map",
     "692.b5101568.chunk.js.map": "/pet-store/static/js/692.b5101568.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6626c684.css",
-    "static/js/main.d521ec38.js"
+    "static/css/main.d47839c8.css",
+    "static/js/main.21ce3425.js"
   ]
 }
