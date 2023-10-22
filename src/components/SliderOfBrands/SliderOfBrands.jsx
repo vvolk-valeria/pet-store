@@ -4,7 +4,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import css from "./SliderOfBrands.module.scss";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export const SliderOfBrands = ({ items }) => {
   const swiperRef = React.useRef(null);
@@ -28,18 +28,18 @@ export const SliderOfBrands = ({ items }) => {
             return (
               <SwiperSlide key={item.id} className={css.swiper_slide}>
                 <Link to="/catalogue/all" className={css.link}>
-                <div className={css.img_cover}>
-                  {item.image ? (
-            <img
-             // className={css.itemImg}
-              src={item.image.filePath}
-              alt={item.name}
-            />
-          ) : (<h4 className={css.slide_title}></h4>)}
-                  <h4 className={css.slide_title}>{item.name}</h4>
-                </div>
+                  <div className={css.img_cover}>
+                    {!item.image ? (
+                      <h4 className={css.slide_title}>{item.name}</h4>
+                    ) : (
+                      <img
+                        // className={css.itemImg}
+                        src={item.image.filePath}
+                        alt={item.name}
+                      />
+                    )}
+                  </div>
                 </Link>
-                {/* { console.log('brands', item.image.filePath)} */}
               </SwiperSlide>
             );
           })}

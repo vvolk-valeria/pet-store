@@ -4,8 +4,8 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import css from "./SliderOfCategories.module.scss";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { Link } from 'react-router-dom';
-import {makeMainLinkName} from '../../helpers/functions';
+import { Link } from "react-router-dom";
+import { makeMainLinkName } from "../../helpers/functions";
 
 export const SliderOfCategories = ({ items }) => {
   const swiperRef = React.useRef(null);
@@ -25,33 +25,30 @@ export const SliderOfCategories = ({ items }) => {
           }}
           modules={[Navigation, Autoplay]}
           autoplay={{
-            delay:3500,
-            disableOnInteraction:false,
-            reverseDirection:true
+            delay: 3500,
+            disableOnInteraction: false,
+            reverseDirection: true,
           }}
           className={css.swiper}
         >
           {items.map((item) => {
             return (
               <SwiperSlide key={item.id} className={css.swiper_slide}>
-      <Link to={makeMainLinkName(item)} className={css.link}>
-      <div className={css.img_cover}>
+                <Link to={makeMainLinkName(item)} className={css.link}>
+                  <div className={css.img_cover}>
+                    {!item.image ? (
+                      <h3 className={css.slide_title}>{item.name}</h3>
+                    ) : (
+                      <img
+                        // className={css.itemImg}
+                        src={item.image.filePath}
+                        alt={item.name}
+                      />
+                    )}
 
-          {/* {item.img ? (
-            <img
-              className={css.itemImg}
-              src={item.mainImage.filePath}
-              alt={item.name}
-            />
-          ) : (<h3 className={css.slide_title}>{item.name}</h3>)} */}
-
-         <h3 className={css.slide_title}>{item.name}</h3>  
-        </div>
-
-
-        </Link>
-         
-
+                    <h3 className={css.slide_title}>{item.name}</h3>
+                  </div>
+                </Link>
               </SwiperSlide>
             );
           })}

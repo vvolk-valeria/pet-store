@@ -41,10 +41,8 @@ const Homepage = () => {
   
 const cardsOnSale = useSelector(selectOnSale);
 
- console.log('mainCategories', mainCategories);
-
+// console.log('mainCategories', mainCategories);
 // console.log('cardsOnSale',cardsOnSale);
-
 
 
 if (cardsOnSale.length === 0 || mainCategories.length === 0){
@@ -69,16 +67,17 @@ const {content} = cardsOnSale;
 
  
 {/* //=== розкоментувати коли буде ендпоінт 
+<div className={css.slider_box}>
 <h2 className={css.subtitle}>Your Pet will love these</h2>
 
-    <SliderOfCards items={content} /> */} 
+    <SliderOfCards items={content} /> </div>*/} 
 
-
+<div className={css.slider_box}>
     <h2 className={css.subtitle}>On Sale</h2>
 
 
     <SliderOfCards items={content} />
-
+</div>
 
     <h2 className={css.subtitle}>brands</h2>
 
