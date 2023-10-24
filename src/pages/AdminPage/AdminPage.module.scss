@@ -2,62 +2,76 @@
 
 .container {
     width: 1440px;
-    margin: 0 auto;
+    // margin: 0 auto;
     padding: 0 120px;
     display: flex;
-    // min-height: 30vh; // Забезпечте мінімальну висоту контейнера на весь висоту видимого вікна
-}
 
-.col1 {
-    width: 25%;
-}
-
-.col2 {
-    width: 75%;
+    & > div:nth-child(1) {
+        width: 25%;
+        align-items: center;
+        justify-content: center;
+        background-color: #f4f6fa;
+        & > div {
+            margin: 30px auto;
+            align-items: center;
+            text-align: center;
+        }
+        & > ul {
+            margin: 0 auto;
+        }
+    }
+    & > div:nth-child(2) {
+        width: 75%;
+        margin-inline: 20px;
+    }
 }
 
 .list {
     display: flex;
     flex-direction: column;
-
-    width: auto;
+    width: 200px;
+    align-items: left;
 }
 
-.item{
+.item {
     cursor: pointer;
-}
-.item:not(:last-child){
-    margin-bottom: 4px;
-    
+    display: flex;
+    justify-content: space-between;
+    max-width: 150px;
+    align-items: center;
+    transition: all 3s;
+    margin-top: 20px;
+
+    :global(.active) {
+        color: $main-color;
+    }
 }
 
 .link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    display: block;
     color: $text-color;
     font-size: 18px;
     font-weight: 600;
     line-height: 1.77;
-    outline-color: transparent;
+    transition: color 0.5s ease;
 
     :global(.active) {
-    color: $main-color;
+        color: $main-color;
+        transition: transform 0.5s ease;
     }
 }
 
-.link_btn {
-    border: none;
-    background-color: transparent;
-    text-align: left;
-    padding: 0;
-    cursor: pointer;
-    font-family: 'Lato';
+.rotatedIcon {
+    transform: rotate(90deg);
+    transition: transform 0.5s ease;
 }
 
-.link:hover{
-    color: $hover-color;
-}
-
-.link:focus{
-    color: $focus-color;
+.fontOutlet {
+    font-size: 14px;
+    // transform: scaleY(1);
+    font-family: Helvetica;
+    // font-weight: 500;
 }

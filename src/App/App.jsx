@@ -57,16 +57,17 @@ const App = () => {
             <Route path="orders/:orderId" element={<UserOrderItem />}></Route>
             <Route path="reviews" element={<UserReviews />}></Route>
           </Route>
-          <Route path="/admin" element={<PrivateRoute
-                redirectTo="/"
-                component={<AdminPage />}
-              />}>
-              <Route path="orders" element={<Orders />} ></Route>
-              <Route path="content" element={<Content />} ></Route>
-              <Route path="users" element={<Users />} ></Route>
-              <Route path="info" element={<AdminProfile />}></Route>
-            </Route>
+          
           <Route path="/*" element={<Error />} />
+        </Route>
+        <Route path="/admin" element={<PrivateRoute
+            redirectTo="/"
+            component={<AdminPage />}
+          />}>
+          <Route path="orders" element={<Orders />} ></Route>
+          <Route path="content" element={<Content />} ></Route>
+          <Route path="users" element={<Users />} ></Route>
+          <Route path="info" element={<AdminProfile />}></Route>
         </Route>
       </Routes>
     </Router>
