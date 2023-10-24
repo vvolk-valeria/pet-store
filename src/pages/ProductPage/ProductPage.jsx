@@ -18,10 +18,11 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { selectOnSale } from "../../redux/cards/selectors";
 import { SliderOfCards } from "../../components/SliderOfCards/SliderOfCards";
+import {ProductSlider} from '../../components/ProductSlider/ProductSlider';
 
 const ProductPage = () => {
   const { productId } = useParams();
-  console.log("productId", productId);
+
   const [product, setProduct] = useState(null);
   const favorites = useSelector(selectFavorites);
 
@@ -41,6 +42,7 @@ const ProductPage = () => {
   }
 
   console.log("product", product);
+
 
   const handleAddOrDeleteFavorite = ({ item }) => {
     // if (!isLogged) {
@@ -71,8 +73,12 @@ const ProductPage = () => {
   return (
     <section className={css.section}>
       <div className={styles.container}>
+
         <div className={css.product_info}>
-          <div className={css.product_imgs}></div>
+         
+
+          <ProductSlider items={product}/>
+
 
           <div className={css.product_text}>
           {product.notAvailable ? (
@@ -81,8 +87,7 @@ const ProductPage = () => {
             <p className={css.product_in}>In stock</p>
           )}
             <h1 className={css.product_title}>{product.name}</h1>
-           <p className={css.product_rating}><StarRating /></p> 
-
+           <p className={css.product_rating}><StarRating n={product.rating} size={24}/> <span className={css.product_rating_text}>0 reviews</span></p> 
 
             {product.priceWithDiscount ? (
             <div className={css.product_price_box}>

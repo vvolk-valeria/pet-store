@@ -1,6 +1,6 @@
 import css from "./StarRatings.module.scss";
 import { useState } from "react";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export const StarRate = () => {
   const [rating, setRating] = useState(null);
@@ -38,17 +38,41 @@ export const StarRate = () => {
 };
 
 
-export const StarRating = (n) => {
+export const StarRating = ({n, size}) => {
+
+if (!n){
   return (
     <>
-      {[...Array(n)].map((_, index) => {
+    {[...Array(5)].map((_, index) => {
         return (
           <label key={index} >
-            <AiFillStar size={16} className={css.icon}/>
+            <AiOutlineStar size={size} className={css.icon}/>
           </label>
         );
       })}
+    </>);
+}
+
+else {
+    return (<>
+      {[...Array(n)].map((_, index) => {
+        return (
+          <label key={index} >
+            <AiFillStar size={size} className={css.icon}/>
+          </label>
+        );
+      })}
+      {[...Array(3)].map((_, index) => {
+        return (
+          <label key={index} >
+            <AiOutlineStar size={size} className={css.icon}/>
+          </label>
+        );
+      })}
+     
     </>
   );
+}
+
 };
 

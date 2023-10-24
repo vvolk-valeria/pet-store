@@ -32,7 +32,7 @@ const Card = ({ item }) => {
 
   return (
     <li className={styles.item}>
-      <Link to={`/catalogue/products/${item.id}`}>
+      <Link to={`/catalogue/products/${item.id}/about`}>
         <div className={styles.img_cover}>
           {item.mainImage ? (
             <img
@@ -52,14 +52,14 @@ const Card = ({ item }) => {
             <p className={styles.cardStockIn}>In stock</p>
           )}
 
-          {item.rating ? (
+          {/* {item.rating ? ( */}
             <p className={styles.cardRating}>
-              {StarRating(item.rating)}
+              <StarRating n={item.rating} size={16}/>
               <span className={styles.cardRating_left}>
-                Rating: {item.rating}
+              0 reviews
               </span>
             </p>
-          ) : null}
+          {/* // ) : null} */}
 
           {item.priceWithDiscount ? (
             <div className={styles.cardPriceBox}>
