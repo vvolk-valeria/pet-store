@@ -1,10 +1,14 @@
+import css from './Users.module.scss'
 
 const Users = () => {
     
     return (
-        <>
-            <h1>Users</h1>
-        </>
+        <div className={css.productContainer}>
+            <div className={css.firstLine}>
+                    <p>Users</p>
+                    <></>
+            </div>
+        </div>
     )
 }
 

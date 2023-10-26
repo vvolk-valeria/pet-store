@@ -7,20 +7,22 @@ import Pagination from "../../../Pagination/Pagination";
 import { AiOutlineDelete } from 'react-icons/ai'
 import { MdOutlineEdit } from 'react-icons/md'
 import { Sort } from "../../../Sort/Sort";
+import { NavLink } from "react-router-dom";
+import Loader from "../../../Loader/Loader";
 
 const Products = () => {
     const dispatch = useDispatch();
     const allCards = useSelector(selectCards);
-    const [isLoading, setIsLoading] = useState(true);
+    const isLoading = useSelector(({ cards }) => cards.isLoading)
     const [currentPage, setCurrentPage] = useState(1);
     const PageSize = 10;
 
     useEffect(() => {
         dispatch(getAllCards())
-            .then(() => setIsLoading(false))
+            .then()
             .catch((error) => {
                 console.error('Error fetching data:', error);
-                setIsLoading(false);
+                
             });
     }, [dispatch]);
 
@@ -34,7 +36,7 @@ const Products = () => {
     }, [currentPage, allCards.content]);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loader />;
     }
 
     if (!allCards || !allCards.content || allCards.content.length === 0) {
@@ -43,6 +45,15 @@ const Products = () => {
 
     return (
         <div className={css.productContainer}>
+            <div className={css.firstLine}>
+                    <p>Products</p>
+                    <div className={css.search}>
+                        <input type="text" placeholder="Quick search" />
+                    </div>
+                    <NavLink to={'create'} type="button" className={css.topButton}>
+                        Create
+                    </NavLink>
+            </div>
             <Sort />
             <div className={css.columnHeaders}>
                 <p>Image</p>

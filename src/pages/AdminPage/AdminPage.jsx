@@ -4,6 +4,7 @@ import css from './AdminPage.module.scss';
 import { NavLink, Outlet } from 'react-router-dom';
 import Logo from '../../icons/logo';
 import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai'
+import { useSelector } from 'react-redux';
 
 
 const AdminPage = () => {
@@ -78,15 +79,6 @@ const AdminPage = () => {
             </div>
             
             <div>
-                <div className={css.firstLine}>
-                    <p>{activeItem.text}</p>
-                    <div className={css.search}>
-                        <input type="text" placeholder="Quick search" />
-                    </div>
-                    <button type="button" className={css.topButton}>
-                        Create
-                    </button>
-                </div>
                 <Suspense fallback={<Loader/>}>
                     <Outlet />
                 </Suspense>

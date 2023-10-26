@@ -14,6 +14,7 @@ import './App.module.scss'
 import {PrivateRoute} from '../helpers/routs/PrivateRoute'
 import AdminPage from '../pages/AdminPage/AdminPage';
 import ContentRouter from '../components/AdminFolder/ContentFolder/ContentRouter';
+import CreateProduct from '../components/AdminFolder/ContentFolder/CreateProduct/CreateProduct';
 
 const UserPage = lazy(() => import('../pages/UserPage/UserPage'));
 const UserAccount = lazy(() => import('../components/UserAccount/UserAccount'));
@@ -64,9 +65,11 @@ const App = () => {
             component={<AdminPage />}
           />}>
           <Route path="orders" element={<Orders />} ></Route>
-          <Route path=":contentId" element={<ContentRouter />} ></Route>
+          <Route path=":contentId" element={<ContentRouter />} >
+            <Route path=":createId" element={<ContentRouter />} />
+          </Route>
           <Route path="users" element={<Users />} ></Route>
-          <Route path="info" element={<AdminProfile />}></Route>
+          <Route path="account" element={<AdminProfile />}></Route>
         </Route>
       </Routes>
     <ToastContainer />

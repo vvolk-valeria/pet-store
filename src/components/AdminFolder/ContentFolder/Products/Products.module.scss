@@ -115,7 +115,60 @@
     background-color: $not-available;
 }
 
-.picture {
-    width: 35px;
-    height: 35px;
+.picture { 
+    justify-content: center;
+
+    & > img {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.firstLine {
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    font-size: 30px;
+    font-weight: 600;
+    width: 100%;
+    margin: 40px 0 20px 0;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    input {
+        width: 350px;
+        height: 40px;
+        padding: 8px 16px;
+        border-radius: 40px;
+        border: 1px solid #808080;
+        gap: 8px;
+        color: $second-text-color;
+        margin-right: 100px;
+    }
+}
+
+.topButton {
+    background-color: $main-color;
+    border-radius: 999px;
+    height: 40px;
+    width: 148px;
+    cursor: pointer;
+    color: $btn-text;
+    border-color: transparent;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: center;
+}
+
+.topButton:hover {
+    background-color: $hover-color;
+}
+.topButton:focus {
+    background-color: $focus-color;
 }
