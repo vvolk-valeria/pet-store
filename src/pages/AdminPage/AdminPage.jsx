@@ -3,46 +3,91 @@ import { Suspense, useState } from 'react';
 import css from './AdminPage.module.scss';
 import { NavLink, Outlet } from 'react-router-dom';
 import Logo from '../../icons/logo';
-import { AiOutlineRight, AiOutlineDown } from 'react-icons/ai'
-import { IoIosArrowUp } from 'react-icons/io';
+import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai'
 
 
 const AdminPage = () => {
-    const [activeItem, setActiveItem] = useState('orders');
+    const [activeItem, setActiveItem] = useState({ href: 'account', text: 'My profile'});
+    const [isContentListOpen, setIsContentListOpen] = useState(false);
+
     const navItems = [
         { href: 'orders', text: 'Orders'},
         { href: 'content', text: 'Content'},
         { href: 'users', text: 'Users'},
-        { href: 'admin/account', text: 'My profile'},
+        { href: 'account', text: 'My profile'},
     ];
+
+    const contentItems = [
+        {href: 'products', text: 'Products'},
+        {href: 'categories', text: 'Categories'},
+        {href: 'brands', text: 'Brands'},
+        {href: 'materials', text: 'Materials'},
+        {href: 'colors', text: 'Colors'},
+        {href: 'weights', text: 'Weights'},
+        {href: 'sizes', text: 'Sizes'},
+        {href: 'prescriptions', text: 'Prescriptions'},
+        {href: 'constants', text: 'Constants'},
+    ]
     
     return (
         <div className={css.container}>
             <div>
-                <div>
-                    <NavLink to="/" className={css.logo}>
-                        <Logo />
-                    </NavLink>
-                </div>
-                <ul className={css.list}>
+                <NavLink to="/" className={css.logo}>
+                    <Logo />
+                </NavLink>
+                <div className={css.list}>
                     {navItems.map(({ href, text }) => (
-                        <li
-                            className={href === activeItem ? `${css.item} ${css.activeItem}` : css.item}
-                            key={href}
-                            onClick={() => setActiveItem(href)}
-                        >
-                            <NavLink to={href} className={css.link}>
-                                <p>{text}</p>
-                                <span className={activeItem === href ? css.rotatedIcon : null}>
-                                    <AiOutlineRight />
-                                </span>
-                            </NavLink>
-                        </li>
+                        <div key={href}>
+                            {href === 'content' ? (
+                                <div
+                                    className={href === activeItem.href ? `${css.activeItem} ${css.content}` : `${css.content}`}
+                                    onClick={() => { 
+                                        setActiveItem({ href, text }); 
+                                        setIsContentListOpen((prevIsContentListOpen) => !prevIsContentListOpen); 
+                                    }}
+                                >
+                                    <div>
+                                        <p>{text}</p>
+                                        <span>
+                                            {isContentListOpen ? <AiOutlineDown /> : <AiOutlineRight />}
+                                        </span>
+                                    </div>
+                                    {isContentListOpen && (
+                                        <ul className={css.contentList}>
+                                            {contentItems.map((contentItem) => (
+                                                <li key={contentItem.href}>
+                                                    <NavLink to={contentItem.href} className={css.contentItem}>
+                                                        {contentItem.text}
+                                                    </NavLink>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                            ) : ( 
+                                <NavLink
+                                    className={href === activeItem.href ? css.activeItem : ''}
+                                    to={href}
+                                    onClick={() => setActiveItem({ href, text })}
+                                >
+                                    <p>{text}</p>
+                                </NavLink>
+                            )}
+                        </div>
                     ))}
-                </ul>
+                </div>
             </div>
             
-            <div className={css.fontOutlet}>
+            <div>
+                <div className={css.firstLine}>
+                    <p>{activeItem.text}</p>
+                    <div className={css.search}>
+                        <input type="text" placeholder="Quick search" />
+                    </div>
+                    <button type="button" className={css.topButton}>
+                        Create
+                    </button>
+                </div>
                 <Suspense fallback={<Loader/>}>
                     <Outlet />
                 </Suspense>

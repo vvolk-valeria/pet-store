@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react";
-import { getAllCards } from "../../../redux/cards/operations";
+import { useEffect, useMemo, useState } from "react";
+import { getAllCards } from "../../../../redux/cards/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCards } from "../../../redux/cards/selectors";
-import css from "./Content.module.scss"
+import { selectCards } from "../../../../redux/cards/selectors";
+import css from "./Products.module.scss"
+import Pagination from "../../../Pagination/Pagination";
+import { AiOutlineDelete } from 'react-icons/ai'
+import { MdOutlineEdit } from 'react-icons/md'
+import { Sort } from "../../../Sort/Sort";
 
-const Content = () => {
+const Products = () => {
     const dispatch = useDispatch();
     const allCards = useSelector(selectCards);
     const [isLoading, setIsLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const PageSize = 10;
 
     useEffect(() => {
         dispatch(getAllCards())
@@ -17,7 +23,15 @@ const Content = () => {
                 setIsLoading(false);
             });
     }, [dispatch]);
-    
+
+    const currentTableData = useMemo(() => {
+        if (!allCards || !allCards.content) {
+            return [];
+        }
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return allCards.content.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage, allCards.content]);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -26,18 +40,11 @@ const Content = () => {
     if (!allCards || !allCards.content || allCards.content.length === 0) {
         return <div>No data available.</div>;
     }
-    console.log(allCards)
+    console.log(allCards);
 
     return (
         <div className={css.productContainer}>
-            <div className={css.firstLine}>
-                <h2>Content</h2>
-                <div>Quick search</div>
-                <button>Create</button>
-            </div>
-            <div>
-                Sort by
-            </div>
+            <Sort />
             <div className={css.columnHeaders}>
                 <p>Image</p>
                 <p>Name</p>
@@ -49,8 +56,8 @@ const Content = () => {
                 <p>Available</p>
                 <p></p>
             </div>
-            {allCards.content.map((item) => (
-                <div key={item.id} className={css.productRow}>
+            {currentTableData.map(item => (
+                <div key={item.id} className={item.notAvailable ? css.productRow : `${css.productRow} ${css.notAvailable}`}>
                     <div className={css.picture}>
                         {item.images && item.images.length > 0 && (
                             <img src={item.images[0].filePath} alt="" />
@@ -63,11 +70,18 @@ const Content = () => {
                     <div>{item.brand ? item.brand.name : "No brand"}</div>
                     <div>{item.newArrival ? 'Yes' : 'No'}</div>
                     <div>{item.notAvailable ? 'In stock' : 'Out of stock'}</div>
-                    <div>R/D</div>
+                    <div><MdOutlineEdit /> <AiOutlineDelete /></div>
                 </div>
             ))}
+            <Pagination
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={allCards.content.length}
+                pageSize={PageSize}
+                onPageChange={page => setCurrentPage(page)}
+            />
         </div>
     );
 }
 
-export default Content;
+export default Products;
