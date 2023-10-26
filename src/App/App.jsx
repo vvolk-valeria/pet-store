@@ -13,6 +13,7 @@ import { Layout } from '../components/Layout/Layout'
 import './App.module.scss'
 import {PrivateRoute} from '../helpers/routs/PrivateRoute'
 import AdminPage from '../pages/AdminPage/AdminPage';
+import ContentRouter from '../components/AdminFolder/ContentFolder/ContentRouter';
 
 const UserPage = lazy(() => import('../pages/UserPage/UserPage'));
 const UserAccount = lazy(() => import('../components/UserAccount/UserAccount'));
@@ -24,7 +25,6 @@ const ProductAbout = lazy(() => import('../components/ProductAbout/ProductAbout'
 const ProductInstructions = lazy(() => import('../components/ProductInstructions/ProductInstructions'));
 const ProductReviews = lazy(() => import('../components/ProductReviews/ProductReviews'));
 const Orders = lazy(() => import('../components/AdminFolder/Orders/Orders'));
-const Content = lazy(() => import('../components/AdminFolder/Content/Content'));
 const Users = lazy(() => import('../components/AdminFolder/Users/Users'));
 const AdminProfile = lazy(() => import('../components/AdminFolder/AdminProfile/AdminProfile'));
 
@@ -64,7 +64,7 @@ const App = () => {
             component={<AdminPage />}
           />}>
           <Route path="orders" element={<Orders />} ></Route>
-          <Route path="content" element={<Content />} ></Route>
+          <Route path=":contentId" element={<ContentRouter />} ></Route>
           <Route path="users" element={<Users />} ></Route>
           <Route path="info" element={<AdminProfile />}></Route>
         </Route>
