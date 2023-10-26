@@ -40,7 +40,6 @@ const Products = () => {
     if (!allCards || !allCards.content || allCards.content.length === 0) {
         return <div>No data available.</div>;
     }
-    console.log(allCards);
 
     return (
         <div className={css.productContainer}>
