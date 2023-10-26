@@ -43,10 +43,9 @@ const AdminPage = () => {
                                     className={href === activeItem.href ? `${css.activeItem} ${css.content}` : `${css.content}`}
                                     onClick={() => { 
                                         setActiveItem({ href, text }); 
-                                        setIsContentListOpen((prevIsContentListOpen) => !prevIsContentListOpen); 
                                     }}
                                 >
-                                    <div>
+                                    <div onClick={() => {setIsContentListOpen((prevIsContentListOpen) => !prevIsContentListOpen);}}>
                                         <p>{text}</p>
                                         <span>
                                             {isContentListOpen ? <AiOutlineDown /> : <AiOutlineRight />}
@@ -56,7 +55,7 @@ const AdminPage = () => {
                                         <ul className={css.contentList}>
                                             {contentItems.map((contentItem) => (
                                                 <li key={contentItem.href}>
-                                                    <NavLink to={contentItem.href} className={css.contentItem}>
+                                                    <NavLink to={contentItem.href}>
                                                         {contentItem.text}
                                                     </NavLink>
                                                 </li>
