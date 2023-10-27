@@ -2,16 +2,15 @@ import css from "./UserInfo.module.scss";
 // import { useState, useEffect } from 'react';
 
 import { useState } from "react";
-import { GoPencil } from 'react-icons/go';
-import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md';
+import { GoPencil } from "react-icons/go";
+import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
 // import { useDispatch } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 //import { useSelector } from 'react-redux';
-import {user} from '../UserAccount/UserAccount'
+import { user } from "../UserAccount/UserAccount";
 
 import { ErrorMessage, Form, Formik, Field } from "formik";
 import { schemaUserPersonalInfo } from "../../helpers/schemes";
-
 
 const initialValues = {
   name: user.name,
@@ -66,7 +65,6 @@ export const UserPersonalInfo = () => {
     return;
   };
 
-
   return (
     <>
       <h3 className={css.title}>Personal information</h3>
@@ -89,9 +87,13 @@ export const UserPersonalInfo = () => {
                 value={props.values.name}
                 disabled={disabled}
                 onClick={handleBtnEnable}
-                className={ (props.touched.name && props.errors.name) ? `${css.invalid} ${css.input}` : `${css.input}` }
+                className={
+                  props.touched.name && props.errors.name
+                    ? `${css.invalid} ${css.input}`
+                    : `${css.input}`
+                }
                 required
-              /> 
+              />
               <ErrorMessage name="name" component="p" className={css.error} />
             </div>
 
@@ -100,7 +102,11 @@ export const UserPersonalInfo = () => {
                 Surname
               </label>
               <Field
-                className={ (props.touched.surname && props.errors.surname) ? `${css.invalid} ${css.input}` : `${css.input}` }
+                className={
+                  props.touched.surname && props.errors.surname
+                    ? `${css.invalid} ${css.input}`
+                    : `${css.input}`
+                }
                 name="surname"
                 id="surname"
                 value={props.values.surname}
@@ -121,7 +127,11 @@ export const UserPersonalInfo = () => {
                 E-mail
               </label>
               <Field
-                className={ (props.touched.email && props.errors.email) ? `${css.invalid} ${css.input}` : `${css.input}` }
+                className={
+                  props.touched.email && props.errors.email
+                    ? `${css.invalid} ${css.input}`
+                    : `${css.input}`
+                }
                 name="email"
                 id="email"
                 value={props.values.email}
@@ -138,7 +148,11 @@ export const UserPersonalInfo = () => {
                 Password
               </label>
               <Field
-                className={ (props.touched.password && props.errors.password) ? `${css.invalid} ${css.input}` : `${css.input}` }
+                className={
+                  props.touched.password && props.errors.password
+                    ? `${css.invalid} ${css.input}`
+                    : `${css.input}`
+                }
                 name="password"
                 id="password"
                 value={props.values.password}
@@ -147,13 +161,18 @@ export const UserPersonalInfo = () => {
                 onClick={handleBtnEnable}
                 required
               />
-              <button type="button"
+              <button
+                type="button"
                 // id="visibilityBtn"
                 className={css.iconPassword}
                 onClick={togglePassword}
                 disabled={disabled}
               >
-                {passwordShow ? <MdOutlineVisibility size={24}/> : <MdOutlineVisibilityOff size={24}/>}
+                {passwordShow ? (
+                  <MdOutlineVisibility size={24} />
+                ) : (
+                  <MdOutlineVisibilityOff size={24} />
+                )}
               </button>
               <ErrorMessage
                 name="password"
@@ -166,7 +185,11 @@ export const UserPersonalInfo = () => {
                 Confirm password
               </label>
               <Field
-                className={ (props.touched.confirm && props.errors.confirm) ? `${css.invalid} ${css.input}` : `${css.input}` }
+                className={
+                  props.touched.confirm && props.errors.confirm
+                    ? `${css.invalid} ${css.input}`
+                    : `${css.input}`
+                }
                 name="confirm"
                 id="confirm"
                 value={props.values.confirm}
@@ -175,14 +198,16 @@ export const UserPersonalInfo = () => {
                 onClick={handleBtnEnable}
                 required
               />
-              <button type="button"
-            
+              <button
+                type="button"
                 className={css.iconPassword}
                 onClick={toggleConfirmPassword}
                 disabled={disabled}
               >
                 {confirmPasswordShow ? (
-                  <MdOutlineVisibility size={24}/>) : (<MdOutlineVisibilityOff size={24}/>
+                  <MdOutlineVisibility size={24} />
+                ) : (
+                  <MdOutlineVisibilityOff size={24} />
                 )}
               </button>
               <ErrorMessage
@@ -199,13 +224,16 @@ export const UserPersonalInfo = () => {
                 className={css.button}
               >
                 Edit
-                <GoPencil size={20} className={css.btn__icon}/>
+                <GoPencil size={20} className={css.btn__icon} />
               </button>
             ) : (
               <ul className={css.list__btn}>
                 <li className={css.item__btn}>
-                  <button type="submit" className={css.button}
-                  disabled={disabledBtn}>
+                  <button
+                    type="submit"
+                    className={css.button}
+                    disabled={disabledBtn}
+                  >
                     Confirm
                   </button>
                 </li>

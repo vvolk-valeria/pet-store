@@ -39,6 +39,7 @@
     flex-wrap: nowrap;
     overflow: hidden;
     position: relative;
+    align-items: flex-start;
 
     & > div {
         display:flex;
